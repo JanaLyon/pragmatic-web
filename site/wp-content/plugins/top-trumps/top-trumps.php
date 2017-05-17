@@ -7,6 +7,7 @@ Description: A custom post plugin for Pragmatic challenge
 Author: Jana Lyon
 Version: 1.0
 Author URI: http://janalyon.com
+Licence: GPLv2
 */
 
 
@@ -170,53 +171,17 @@ function tt_custom_template($single) {
     return $single;
 }
 
-/* Filter the single_template with our custom function*/
+// Filter the single_template with custom function
 add_filter('single_template', 'tt_custom_template', 999);
 
 register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 register_activation_hook( __FILE__, 'myplugin_flush_rewrites' );
+
 function myplugin_flush_rewrites() {
-    // call your CPT registration function here (it should also be hooked into 'init')
+    // call your CPT registration function here
     tt_register_post_type();
     flush_rewrite_rules();
 }
 
-// Add template functionality
-function tt_locate_template( $template_name, $template_path = '', $default_path = '' ) {
-
-    // Set default plugin templates path.
-    if ( ! $default_path ) :
-        $default_path = plugin_dir_path( __FILE__ ) . 'templates/'; // Path to the template folder
-    endif;
-
-    // Search template file in theme folder.
-    $template = locate_template( array(
-        $template_path . $template_name,
-        $template_name
-    ) );
-
-    // Get plugins template file.
-    if ( ! $template ) :
-        $template = $default_path . $template_name;
-    endif;
-
-    return apply_filters( 'tt_locate_template', $template, $template_name, $template_path, $default_path );
-
-}
-// Get template
-function tt_get_template( $template_name, $args = array(), $tempate_path = '', $default_path = '' ) {
-
-    if ( is_array( $args ) && isset( $args ) ) :
-        extract( $args );
-    endif;
-
-    $template_file = tt_locate_template( $template_name, $tempate_path, $default_path );
-
-    if ( ! file_exists( $template_file ) ) :
-        _doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $template_file ), '1.0.0' );
-        return;
-    endif;
-
-    include $template_file;
-
-}
+include 'includes/template-func.php';
+include 'includes/pagetemplater.php';
