@@ -89,6 +89,7 @@
 .tt_menu {
   background-color: black;
   height: 60px;
+  padding-top: 10px;
   width: 100%; }
   .tt_menu .tt_button-container {
     padding: 0 30px;
@@ -98,17 +99,22 @@
     color: white;
     font-family: 'bangers', cursive;
     font-size: 20px;
-    height: 60px;
-    line-height: 60px; }
-    .tt_menu .tt_button-container .tt_menu-button {
+    height: 50px;
+    line-height: 50px; }
+    .tt_menu .tt_button-container .tt_menu-label {
       padding: 0 10px;
       margin: 0 5px; }
+      .tt_menu .tt_button-container .tt_menu-label i {
+        line-height: 50px;
+        padding-left: 10px; }
     .tt_menu .tt_button-container .tt_menu-button {
       padding: 0 10px;
       margin: 0 5px;
-      cursor: pointer; }
+      cursor: pointer;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px; }
       .tt_menu .tt_button-container .tt_menu-button i {
-        line-height: 60px;
+        line-height: 50px;
         padding-left: 10px; }
       .tt_menu .tt_button-container .tt_menu-button:hover {
         background-color: white;

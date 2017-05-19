@@ -19,7 +19,7 @@ get_header();
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="<?php echo plugins_url('top-trumps/js/main.js') ?>"></script>
-
+    <div id="test"></div>
     <div class="tt_menu">
         <div class="wrap">
         <div class="tt_button-container">
