@@ -4,7 +4,7 @@
   margin: 15px;
 
   .tt_card {
-    width:270px;
+    width: 270px;
     height: 390px;
     .front, .back {
       border-radius: 10px;
@@ -31,7 +31,7 @@
     }
     .data-container {
       margin-top: 8px;
-      p{
+      p {
         line-height: 1.2rem;
         border-bottom: 1px white dotted;
         margin: 0 0 7px;
@@ -58,6 +58,7 @@
     }
   }
 }
+
 //card flipping
 .tt_card-container {
   -webkit-perspective: 1000;
@@ -110,4 +111,39 @@
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+
+//menu
+.tt_menu {
+  background-color: black;
+  height: 60px;
+  width: 100%;
+  .tt_button-container {
+    padding: 0 30px;
+    text-align: center;
+    display: inline-flex;
+    background-color: black;
+    color: white;
+    font-family: 'bangers', cursive;
+    font-size: 20px;
+    height: 60px;
+    line-height: 60px;
+    .tt_menu-button {
+      padding: 0 10px;
+      margin: 0 5px;
+    }
+    .tt_menu-button {
+      padding: 0 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      i{
+        line-height: 60px;
+        padding-left: 10px;
+      }
+      &:hover{
+        background-color: white;
+        color: black;
+      }
+    }
+  }
 }
