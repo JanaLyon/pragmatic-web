@@ -7,6 +7,9 @@ $topTrumpSet_query = new WP_Query(
         'order' => 'DESC',
     )
 );
+//read in cookies, strip \ set by js lib
+$favourites_cookie = json_decode(stripcslashes($_COOKIE['favourites']));
+
 ?>
 <div class="tt_card-set">
     <?php
@@ -19,23 +22,29 @@ $topTrumpSet_query = new WP_Query(
     $speed_value = get_post_meta(get_the_ID(), "_tt_create_speed", true);
     $agility_value = get_post_meta(get_the_ID(), "_tt_create_agility", true);
     $fighting_skills_value = get_post_meta(get_the_ID(), "_tt_create_fighting_skills", true);
+    // see if out title is in the array
+    $favourite_btn_visibility = in_array(the_title('','',false), $favourites_cookie);
 
-    //var_dump($height_value)
     ?>
-    <!--div class="tt_card-element"-->
-    <div class="tt_card-container ontouchstart=" this.classList.toggle(
+
+    <div  class="tt_card-wrapper"  this.classList.toggle(
     'hover');"
+    data-name="<?php echo the_title() ?>"
+    data-height="<?php echo $height_value; ?>"
     data-intelligence="<?php echo $intelligence_value ?>"
     data-strength="<?php echo $strength_value ?>"
     data-speed="<?php echo $speed_value ?>"
     data-agility="<?php echo $agility_value ?>"
     data-fighting_skills="<?php echo $fighting_skills_value ?>"
-    data-height="<?php echo $height_value; ?>"
+    data-favourite="<?php echo $favourite_btn_visibility?1:0 ?>"
     >
+<!--    data-compare=false-->
+
+    <div class="tt_card-container ontouchstart=">
     <div class="tt_card">
         <div class="front">
             <div class="name-container">
-                <?php echo the_title(); ?>
+                <?php the_title(); ?>
             </div>
             <div class="image-container">
                 <?php the_post_thumbnail(); ?>
@@ -62,30 +71,41 @@ $topTrumpSet_query = new WP_Query(
         <div class="back">
             <div class="description-container">
                 <div class="name-container">Origin story</div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there
-                    live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                    the semantics, a large language ocean. It is a paradisematic country, in which
-                    roasted parts of sentences fly into your mouth. </p>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the semantics, a large language ocean. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
             </div>
             <div class="image-container">
                 <?php the_post_thumbnail(); ?>
             </div>
             <div class="name-container">
-                <?php echo the_title(); ?>
+                <?php the_title(); ?>
             </div>
         </div>
     </div>
-</div>
-<!--div class="tt_selections">
-    <div class="tt_compare">
-        <i class="fa fa-check-square-o" aria-hidden="true"></i>
     </div>
-    <div class="tt_favourite">
-        <i class="fa fa-heart-o" aria-hidden="true"></i>
+    <div class="tt_selections">
+<!--        <div class="tt_compare">-->
+<!--            <i class="fa fa-check-square-o"-->
+<!--               aria-hidden="true"-->
+<!--               style="display: --><?php //echo $favourite_btn_visibility?'block':'none'?><!--"-->
+<!--            ></i>-->
+<!--            <i class="fa fa-check-square"-->
+<!--               aria-hidden="true"-->
+<!--               style="display: --><?php //echo $favourite_btn_visibility?'block':'none'?><!--"-->
+<!--            ></i>-->
+<!--        </div>-->
+        <div class="tt_favourite">
+            <i class="fa fa-heart-o"
+               aria-hidden="true"
+               style="display: <?php echo $favourite_btn_visibility?'none':'block'?>"
+            ></i>
+            <i class="fa fa-heart"
+               aria-hidden="true"
+               style="display: <?php echo $favourite_btn_visibility?'block':'none'?>"
+            ></i>
+        </div>
     </div>
 </div>
-</div-->
+
 
 <?php
 } //if ($this_query)

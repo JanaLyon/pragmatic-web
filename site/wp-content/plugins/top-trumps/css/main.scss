@@ -1,7 +1,23 @@
-.tt_card-container {
+.tt_card-wrapper.hidden {
+  display: none;
+  //width: 0;
+  //height: 0;
+  //opacity: 0;
+  //margin: 0;
+  //padding: 0;
+}
+
+.tt_card-wrapper {
   font-family: 'Oswald', sans-serif;
-  display: inline-flex;
+  display: inline-block;
   margin: 15px;
+
+  //-webkit-transition: all .5s ease-in-out;
+  //-moz-transition: all .5s ease-in-out;
+  //-o-transition: all .5s ease-in-out;
+  //transition: all .5s ease-in-out;
+  //float: left;
+  //position: relative;
 
   .tt_card {
     width: 270px;
@@ -52,13 +68,47 @@
     }
     .description-container {
       p {
-        line-height: 1.7rem;
-        padding: 0 5px;
+        line-height: 1.6rem;
+        padding: 0 3px;
       }
     }
   }
 }
-
+//compare and favourite buttons
+.tt_selections{
+  .tt_compare {
+    cursor: pointer;
+    position: relative;
+    .fa-check-square-o{
+      display:block;
+      position: absolute;
+      left: 33%;
+      top: 5px;
+    }
+    .fa-check-square{
+      display: none;
+      position: absolute;
+      left: 33%;
+      top: 5px;
+    }
+  }
+  .tt_favourite{
+    cursor: pointer;
+    position: relative;
+    .fa-heart-o{
+      //display:block;
+      position: absolute;
+      left: 66%;
+      top: 5px;
+    }
+    .fa-heart{
+      //display: none;
+      position: absolute;
+      left: 66%;
+      top: 5px;
+    }
+  }
+}
 //card flipping
 .tt_card-container {
   -webkit-perspective: 1000;
@@ -97,6 +147,7 @@
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 
+  height:100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -130,8 +181,22 @@
     height: 50px;
     line-height: 50px;
     .tt_menu-label {
-      padding: 0 10px;
+      padding: 0 7px;
       margin: 0 5px;
+      line-height: 50px;
+      span.tt_btn{
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding:3px;
+        &:hover{
+          background-color: white;
+          color: black;
+          border-radius: 5px;
+          padding:3px;
+        }
+      }
       i{
         line-height: 50px;
         padding-left: 10px;
@@ -151,6 +216,9 @@
         background-color: white;
         color: black;
       }
+    }
+    .tt_menu-compare {
+      display: none;
     }
   }
 }

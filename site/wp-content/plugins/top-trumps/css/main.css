@@ -1,48 +1,87 @@
-.tt_card-container {
+.tt_card-wrapper.hidden {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0; }
+
+.tt_card-wrapper {
   font-family: 'Oswald', sans-serif;
-  display: inline-flex;
-  margin: 15px; }
-  .tt_card-container .tt_card {
+  display: inline-block;
+  margin: 15px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  float: left;
+  position: relative; }
+  .tt_card-wrapper .tt_card {
     width: 270px;
     height: 390px; }
-    .tt_card-container .tt_card .front, .tt_card-container .tt_card .back {
+    .tt_card-wrapper .tt_card .front, .tt_card-wrapper .tt_card .back {
       border-radius: 10px;
       border: 10px solid black;
       background-color: darkred;
       color: white;
       margin: 0;
       display: block; }
-    .tt_card-container .tt_card img {
+    .tt_card-wrapper .tt_card img {
       width: 100%;
       height: auto; }
-    .tt_card-container .tt_card .name-container {
+    .tt_card-wrapper .tt_card .name-container {
       font-family: 'Bangers', cursive;
       font-size: 2.2rem;
       text-align: center;
       margin: 5px 0;
       background-color: black; }
-    .tt_card-container .tt_card .image-container {
+    .tt_card-wrapper .tt_card .image-container {
       border-top: solid black 2px;
       border-bottom: solid black 2px; }
-    .tt_card-container .tt_card .data-container {
+    .tt_card-wrapper .tt_card .data-container {
       margin-top: 8px; }
-      .tt_card-container .tt_card .data-container p {
+      .tt_card-wrapper .tt_card .data-container p {
         line-height: 1.2rem;
         border-bottom: 1px white dotted;
         margin: 0 0 7px;
         padding: 0 0 7px; }
-      .tt_card-container .tt_card .data-container .tt-attribute {
+      .tt_card-wrapper .tt_card .data-container .tt-attribute {
         display: inline-block;
         width: 45%;
         margin-left: 4%; }
-      .tt_card-container .tt_card .data-container .tt-data {
+      .tt_card-wrapper .tt_card .data-container .tt-data {
         display: inline-block;
         width: 45%;
         text-align: right;
         margin-right: 1%; }
-    .tt_card-container .tt_card .description-container p {
-      line-height: 1.7rem;
-      padding: 0 5px; }
+    .tt_card-wrapper .tt_card .description-container p {
+      line-height: 1.6rem;
+      padding: 0 3px; }
+
+.tt_selections .tt_compare {
+  cursor: pointer;
+  position: relative; }
+  .tt_selections .tt_compare .fa-check-square-o {
+    display: block;
+    position: absolute;
+    left: 33%;
+    top: 5px; }
+  .tt_selections .tt_compare .fa-check-square {
+    display: none;
+    position: absolute;
+    left: 33%;
+    top: 5px; }
+
+.tt_selections .tt_favourite {
+  cursor: pointer;
+  position: relative; }
+  .tt_selections .tt_favourite .fa-heart-o {
+    position: absolute;
+    left: 66%;
+    top: 5px; }
+  .tt_selections .tt_favourite .fa-heart {
+    position: absolute;
+    left: 66%;
+    top: 5px; }
 
 .tt_card-container {
   -webkit-perspective: 1000;
@@ -73,6 +112,7 @@
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0; }
@@ -102,8 +142,20 @@
     height: 50px;
     line-height: 50px; }
     .tt_menu .tt_button-container .tt_menu-label {
-      padding: 0 10px;
-      margin: 0 5px; }
+      padding: 0 7px;
+      margin: 0 5px;
+      line-height: 50px; }
+      .tt_menu .tt_button-container .tt_menu-label span.tt_btn {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 3px; }
+        .tt_menu .tt_button-container .tt_menu-label span.tt_btn:hover {
+          background-color: white;
+          color: black;
+          border-radius: 5px;
+          padding: 3px; }
       .tt_menu .tt_button-container .tt_menu-label i {
         line-height: 50px;
         padding-left: 10px; }
@@ -119,3 +171,5 @@
       .tt_menu .tt_button-container .tt_menu-button:hover {
         background-color: white;
         color: black; }
+    .tt_menu .tt_button-container .tt_menu-compare {
+      display: none; }
