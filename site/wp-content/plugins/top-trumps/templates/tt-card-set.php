@@ -38,7 +38,7 @@ $favourites_cookie = json_decode(stripcslashes($_COOKIE['favourites']));
     data-fighting_skills="<?php echo $fighting_skills_value ?>"
     data-favourite="<?php echo $favourite_btn_visibility?1:0 ?>"
     >
-<!--    data-compare=false-->
+<!--data-compare=false-->
 
     <div class="tt_card-container ontouchstart=">
     <div class="tt_card">

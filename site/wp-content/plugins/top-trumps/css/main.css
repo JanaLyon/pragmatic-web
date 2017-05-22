@@ -1,3 +1,9 @@
+/*
+
+Usually I would split this up into SASS 'modules' and recombine when compiling
+
+ */
+/*----- Core styling -------*/
 .tt_card-wrapper.hidden {
   display: none; }
 
@@ -47,6 +53,7 @@
       line-height: 1.6rem;
       padding: 0 3px; }
 
+/*----- Compare and favourite buttons -------*/
 .tt_selections .tt_compare {
   cursor: pointer;
   position: relative; }
@@ -73,6 +80,7 @@
     left: 48%;
     top: 5px; }
 
+/*----- Card flip -------*/
 .tt_card-container {
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
@@ -116,6 +124,7 @@
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
+/*----- Menu -------*/
 .tt_menu {
   background-color: black;
   height: 60px;
