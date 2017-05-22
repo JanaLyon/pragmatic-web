@@ -21,4 +21,4 @@
 <li>Remove Bootstrap</li>
 <li>Remove Fontawesome</li>
 <li>Make the page properly responsive, semantic and accessible</li>
-<li>Tested more throughly across browsers and devices - it has only been tested briefly in Chrome and Safari.</li></ul> 
+<li>Test more throughly across browsers and devices - it has only been tested briefly in Chrome and Safari.</li></ul> 
