@@ -10,14 +10,28 @@ jQuery(document).ready(function ($) {
     $('.tt_menu-label').click(function () {
         $('.tt_menu-attribute').toggle();
     })
+
     $('.tt_menu-attribute').click(function () {
+        var ttNodeList = document.querySelectorAll('.tt_menu-attribute');
+        // convert nodelist to a real array using a shortcut
+        ttNodeList.forEach(function(item){
+            item.classList.remove('selected')
+        });
+        this.classList.add('selected');
+        //sort cards on attribute
         sortCards(this.innerText);
     })
+
     $('.tt_menu-favourites').click(function () {
-       /*
-       show only those that have been added to favourites
-        */
+        //show only those that have been added to favourites
         favouritesShowing = toggleFavourites(favouritesShowing);
+        //toggle active state
+        if (favouritesShowing){
+            this.classList.add('selected')
+        }else {
+
+            this.classList.remove('selected')
+        }
     })
 
     $('.tt_favourite').click(function(){
@@ -25,20 +39,23 @@ jQuery(document).ready(function ($) {
         toggleDataValue('favourite', this);
         //toggle display/hide selected icon
         toggleSelectedIcon('.fa-heart', this);
-
     })
+    // .tt_compare removed due to lack of time
 });
 
+/**
+ * Toggle showing favourites selected or everything
+ * @param favouritesShowing
+ * @returns {boolean|*}
+ */
 function toggleFavourites(favouritesShowing){
     //toggle the bool
     favouritesShowing = !favouritesShowing;
 
     var cardSet = document.querySelector('.tt_card-set'),
         ttNodeList = cardSet.querySelectorAll('.tt_card-wrapper[data-favourite="0"]');
-
-            // convert nodelist to a real array using a shortcut
+        // convert nodelist to a real array using a shortcut
         ttNodeList.forEach(function(item){
-
             if (favouritesShowing){
                 item.classList.add('hidden')
             }else {
@@ -49,6 +66,11 @@ function toggleFavourites(favouritesShowing){
     return favouritesShowing;
 }
 
+/**
+ * Toggle selected state of favourites and compare
+ * @param icon
+ * @param btn
+ */
 function toggleSelectedIcon(icon, btn){
     //toggle display/hide selected icon
     var notSelected = btn.querySelector(icon + '-o'),
@@ -67,6 +89,11 @@ function toggleSelectedIcon(icon, btn){
         }
 }
 
+/**
+ * Toggle data value of favourite to turn favourite on or off
+ * @param dataAttribute
+ * @param card
+ */
 function toggleDataValue(dataAttribute, card){
     var cardWrapper = closest(card,'.tt_card-wrapper');
 
@@ -77,6 +104,10 @@ function toggleDataValue(dataAttribute, card){
     }
 }
 
+/**
+ * Add favourites as selected to cookie (as array)
+ * @param card
+ */
 function addSelectedToCookie(card){
     var currentFavourites = Cookies.getJSON('favourites');
     var cardWrapper = closest(card,'.tt_card-wrapper');
@@ -84,6 +115,11 @@ function addSelectedToCookie(card){
     currentFavourites.push(cardWrapper.dataset['name']);
     Cookies.set('favourites', currentFavourites);
 }
+
+/**
+ * Checks to see if selected is already present and removes if it is
+ * @param card
+ */
 function removeSelectedToCookie(card){
     var currentFavourites = Cookies.getJSON('favourites');
     var cardWrapper = closest(card,'.tt_card-wrapper');
@@ -116,7 +152,6 @@ function sortCards(attribute) {
 
 /**
  * Array sort function based on data-attributes
- *
  * @param array - node with data elements
  * @param attribute - data-*attribute* to compare
  * @param asc - order defaults to desc
@@ -145,8 +180,13 @@ function sortByAttribute(array, dataAttribute, asc) {
     }
 
 }
-
-// taken from http://stackoverflow.com/questions/14234560/javascript-how-to-get-parent-element-by-selector
+/**
+ * taken from http://stackoverflow.com/questions/14234560/javascript-how-to-get-parent-element-by-selector
+ * @param el
+ * @param selector
+ * @param stopSelector
+ * @returns {*}
+ */
 function closest(el, selector, stopSelector) {
     var retval = null;
     while (el) {

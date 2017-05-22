@@ -1,23 +1,11 @@
 .tt_card-wrapper.hidden {
   display: none;
-  //width: 0;
-  //height: 0;
-  //opacity: 0;
-  //margin: 0;
-  //padding: 0;
 }
 
 .tt_card-wrapper {
   font-family: 'Oswald', sans-serif;
   display: inline-block;
   margin: 15px;
-
-  //-webkit-transition: all .5s ease-in-out;
-  //-moz-transition: all .5s ease-in-out;
-  //-o-transition: all .5s ease-in-out;
-  //transition: all .5s ease-in-out;
-  //float: left;
-  //position: relative;
 
   .tt_card {
     width: 270px;
@@ -96,15 +84,13 @@
     cursor: pointer;
     position: relative;
     .fa-heart-o{
-      //display:block;
       position: absolute;
-      left: 66%;
+      left: 48%;
       top: 5px;
     }
     .fa-heart{
-      //display: none;
       position: absolute;
-      left: 66%;
+      left: 48%;
       top: 5px;
     }
   }
@@ -213,6 +199,10 @@
         padding-left: 10px;
       }
       &:hover{
+        background-color: white;
+        color: black;
+      }
+      &.selected{
         background-color: white;
         color: black;
       }
